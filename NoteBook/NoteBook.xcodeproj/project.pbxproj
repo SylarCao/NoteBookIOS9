@@ -99,7 +99,6 @@
 		2CBDD1241BDF650600FB7519 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0991BDF650600FB7519 /* NSData+Base64.m */; settings = {ASSET_TAGS = (); }; };
 		2CBDD1251BDF650600FB7519 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD09B1BDF650600FB7519 /* NSData+CommonCrypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CBDD1261BDF650600FB7519 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD09D1BDF650600FB7519 /* NSString+Base64.m */; settings = {ASSET_TAGS = (); }; };
-		2CBDD1271BDF650700FB7519 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDD09F1BDF650600FB7519 /* AVOSCloud.framework */; settings = {ASSET_TAGS = (); }; };
 		2CBDD1281BDF650700FB7519 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0A31BDF650600FB7519 /* LSCollectionViewHelper.m */; settings = {ASSET_TAGS = (); }; };
 		2CBDD1291BDF650700FB7519 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0A51BDF650600FB7519 /* LSCollectionViewLayoutHelper.m */; settings = {ASSET_TAGS = (); }; };
 		2CBDD12A1BDF650700FB7519 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0A81BDF650600FB7519 /* DraggableCollectionViewFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
@@ -121,6 +120,8 @@
 		2CBDD14B1BDF672200FB7519 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CBDD13C1BDF672200FB7519 /* InfoPlist.strings */; settings = {ASSET_TAGS = (); }; };
 		2CBDD14C1BDF672200FB7519 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CBDD13E1BDF672200FB7519 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
 		2CBDD14D1BDF672200FB7519 /* LocalizableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CBDD1401BDF672200FB7519 /* LocalizableViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		2CBDD1531BDF6B7F00FB7519 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD1501BDF6B7F00FB7519 /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
+		2CBDD1541BDF6B7F00FB7519 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD1521BDF6B7F00FB7519 /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -312,6 +313,10 @@
 		2CBDD1481BDF672200FB7519 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2CBDD1491BDF672200FB7519 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2CBDD14A1BDF672200FB7519 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/LocalizableViewController.xib"; sourceTree = "<group>"; };
+		2CBDD14F1BDF6B7F00FB7519 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		2CBDD1501BDF6B7F00FB7519 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		2CBDD1511BDF6B7F00FB7519 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		2CBDD1521BDF6B7F00FB7519 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,7 +324,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CBDD1271BDF650700FB7519 /* AVOSCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,11 +605,11 @@
 		2CBDD0561BDF650600FB7519 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				2CBDD0571BDF650600FB7519 /* Feedbacks */,
-				2CBDD05A1BDF650600FB7519 /* MenuTableViewCell.h */,
-				2CBDD05B1BDF650600FB7519 /* MenuTableViewCell.m */,
 				2CBDD05C1BDF650600FB7519 /* MenuViewController.h */,
 				2CBDD05D1BDF650600FB7519 /* MenuViewController.m */,
+				2CBDD05A1BDF650600FB7519 /* MenuTableViewCell.h */,
+				2CBDD05B1BDF650600FB7519 /* MenuTableViewCell.m */,
+				2CBDD0571BDF650600FB7519 /* Feedbacks */,
 				2CBDD05E1BDF650600FB7519 /* Reminder */,
 				2CBDD0661BDF650600FB7519 /* RevertVersion */,
 				2CBDD0711BDF650600FB7519 /* SaveVersion */,
@@ -626,13 +630,13 @@
 		2CBDD05E1BDF650600FB7519 /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				2CBDD05F1BDF650600FB7519 /* ReminderDetailedViewController.h */,
-				2CBDD0601BDF650600FB7519 /* ReminderDetailedViewController.m */,
+				2CBDD0641BDF650600FB7519 /* ReminderViewController.h */,
+				2CBDD0651BDF650600FB7519 /* ReminderViewController.m */,
 				2CBDD0611BDF650600FB7519 /* ReminderViewCell.h */,
 				2CBDD0621BDF650600FB7519 /* ReminderViewCell.m */,
 				2CBDD0631BDF650600FB7519 /* ReminderViewCell.xib */,
-				2CBDD0641BDF650600FB7519 /* ReminderViewController.h */,
-				2CBDD0651BDF650600FB7519 /* ReminderViewController.m */,
+				2CBDD05F1BDF650600FB7519 /* ReminderDetailedViewController.h */,
+				2CBDD0601BDF650600FB7519 /* ReminderDetailedViewController.m */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -711,14 +715,14 @@
 		2CBDD0861BDF650600FB7519 /* NoteListView */ = {
 			isa = PBXGroup;
 			children = (
-				2CBDD0871BDF650600FB7519 /* NoteListDetailedViewController.h */,
-				2CBDD0881BDF650600FB7519 /* NoteListDetailedViewController.m */,
-				2CBDD0891BDF650600FB7519 /* NoteListNewCell.h */,
-				2CBDD08A1BDF650600FB7519 /* NoteListNewCell.m */,
-				2CBDD08B1BDF650600FB7519 /* NoteListViewCell.h */,
-				2CBDD08C1BDF650600FB7519 /* NoteListViewCell.m */,
 				2CBDD08D1BDF650600FB7519 /* NoteListViewController.h */,
 				2CBDD08E1BDF650600FB7519 /* NoteListViewController.m */,
+				2CBDD08B1BDF650600FB7519 /* NoteListViewCell.h */,
+				2CBDD08C1BDF650600FB7519 /* NoteListViewCell.m */,
+				2CBDD0891BDF650600FB7519 /* NoteListNewCell.h */,
+				2CBDD08A1BDF650600FB7519 /* NoteListNewCell.m */,
+				2CBDD0871BDF650600FB7519 /* NoteListDetailedViewController.h */,
+				2CBDD0881BDF650600FB7519 /* NoteListDetailedViewController.m */,
 			);
 			path = NoteListView;
 			sourceTree = "<group>";
@@ -737,6 +741,7 @@
 		2CBDD0941BDF650600FB7519 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2CBDD14E1BDF6B7F00FB7519 /* MGSwipeTableCell */,
 				2CBDD0951BDF650600FB7519 /* AES */,
 				2CBDD09E1BDF650600FB7519 /* AVO */,
 				2CBDD0A01BDF650600FB7519 /* DraggableCollectionView */,
@@ -887,6 +892,17 @@
 			path = language;
 			sourceTree = "<group>";
 		};
+		2CBDD14E1BDF6B7F00FB7519 /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CBDD14F1BDF6B7F00FB7519 /* MGSwipeButton.h */,
+				2CBDD1501BDF6B7F00FB7519 /* MGSwipeButton.m */,
+				2CBDD1511BDF6B7F00FB7519 /* MGSwipeTableCell.h */,
+				2CBDD1521BDF6B7F00FB7519 /* MGSwipeTableCell.m */,
+			);
+			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1012,6 +1028,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBDD1531BDF6B7F00FB7519 /* MGSwipeButton.m in Sources */,
 				2CBDD10B1BDF650600FB7519 /* ReminderViewCell.m in Sources */,
 				2CBDD1101BDF650600FB7519 /* RevertVersionTableViewCell.m in Sources */,
 				2CBDD1211BDF650600FB7519 /* PasswordHelper.m in Sources */,
@@ -1060,6 +1077,7 @@
 				2CBDD1181BDF650600FB7519 /* ChangPasswordViewController.m in Sources */,
 				2CBDD0D01BDF650600FB7519 /* DefaultViewController.m in Sources */,
 				2CBDD12D1BDF650700FB7519 /* CommonActionSheet.m in Sources */,
+				2CBDD1541BDF6B7F00FB7519 /* MGSwipeTableCell.m in Sources */,
 				2CBDD0D91BDF650600FB7519 /* ItemModel.m in Sources */,
 				2CBDD10F1BDF650600FB7519 /* RevertNoteListViewController.m in Sources */,
 				2CBDD1251BDF650600FB7519 /* NSData+CommonCrypto.m in Sources */,

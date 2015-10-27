@@ -29,10 +29,25 @@
     self.window.rootViewController = nav;
     [_window addSubview:[nav view]];
     [self.window makeKeyAndVisible];
+    
+    // notification
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
+                                            | UIUserNotificationTypeBadge
+                                            | UIUserNotificationTypeSound
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    DefaultViewController *top_viewcontroller = (DefaultViewController *)m_navi.topViewController;
+    if ([top_viewcontroller isKindOfClass:[NoteListViewController class]])
+    {
+        [(NoteListViewController *)top_viewcontroller EndEdit];
+    }
+    [[SettingHelper Share] SynchronizePasswordTime];
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
@@ -47,6 +62,12 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    if ([[SettingHelper Share] checkNeedPresentPasswordView])
+    {
+        DefaultViewController *top_view_controller = (DefaultViewController *)m_navi.topViewController;
+        [top_view_controller ShowPasswordView];
+    }
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

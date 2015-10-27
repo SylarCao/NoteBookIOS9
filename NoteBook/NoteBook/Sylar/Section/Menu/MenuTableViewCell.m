@@ -43,6 +43,7 @@
 - (void) SetInitialValue
 {
     CGRect content_size = self.contentView.bounds;
+    content_size.size.width = kSCREEN_WIDTH;
     
     // label
     m_label = [[UILabel alloc] init];

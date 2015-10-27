@@ -13,7 +13,7 @@
 #import "ReminderViewCell.h"
 ////////////////////////////////////////////////////////////////////////////
 @interface ReminderViewController ()
-<UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
+<UITableViewDataSource, UITableViewDelegate, ReminderViewCellDelegate>
 {
     NSMutableArray   *m_reminders;
     UITableView      *m_table;
@@ -41,12 +41,6 @@
 {
     [super viewWillAppear:animated];
     [m_table reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) SetInitialValue
@@ -97,26 +91,17 @@
         return [date1 compare:date2];
     }];
     m_reminders = [[NSMutableArray alloc] initWithArray:sort_arr];
-    int rt = [m_reminders count];
+    NSInteger rt = [m_reminders count];
     return rt;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ReminderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[ReminderViewCell GetCellId] forIndexPath:indexPath];
-    
-    __block ReminderViewCell *the_cell = cell;
-    [cell setAppearanceWithBlock:^{
-        the_cell.delegate = self;
-        the_cell.containingTableView = tableView;
-        the_cell.leftUtilityButtons = nil;
-        the_cell.rightUtilityButtons = [the_cell SetRightButtons];
-    } force:NO];
-    
     UILocalNotification *noti = [m_reminders objectAtIndex:indexPath.row];
     [cell SetWithData:noti];
     cell.parentView = self;
-    
+    cell.cbDelegate = self;
     return cell;
 }
 
@@ -130,38 +115,66 @@
     [self.navigationController pushViewController:rr animated:YES];
 }
 
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+//- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+//{
+//    if (index == 1)
+//    {
+//        // delete
+//        UILocalNotification *delete_notification = [(ReminderViewCell *)cell SwapDelete];
+//        if (delete_notification)
+//        {
+//            [[UIApplication sharedApplication] cancelLocalNotification:delete_notification];
+//            NSIndexPath *indexPath = [m_table indexPathForCell:cell];
+//            [m_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//        }
+//        else
+//        {
+//            [self ShowHudWithTitle:LocalizedString(@"DeleteReminderFail") Complete:nil];
+//        }
+//    }
+//    else if (index == 0)
+//    {
+//        // done
+//        [(ReminderViewCell *)cell SwapDone];
+//        [cell hideUtilityButtonsAnimated:YES];
+//        [(ReminderViewCell *)cell HideRedDot];
+//    }
+//    [[ReminderHelper Share] RefreshBadgeNumber];
+//}
+//
+//
+//- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+//{
+//    return YES;
+//}
+
+
+#pragma mark - ReminderViewCellDelegate
+- (void) ReminderViewCellDidTapDelete:(ReminderViewCell *)cell
 {
-    if (index == 1)
+    // delete
+    UILocalNotification *delete_notification = [(ReminderViewCell *)cell SwapDelete];
+    if (delete_notification)
     {
-        // delete
-        UILocalNotification *delete_notification = [(ReminderViewCell *)cell SwapDelete];
-        if (delete_notification)
-        {
-            [[UIApplication sharedApplication] cancelLocalNotification:delete_notification];
-            NSIndexPath *indexPath = [m_table indexPathForCell:cell];
-            [m_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
-        }
-        else
-        {
-            [self ShowHudWithTitle:LocalizedString(@"DeleteReminderFail") Complete:nil];
-        }
+        [[UIApplication sharedApplication] cancelLocalNotification:delete_notification];
+        NSIndexPath *indexPath = [m_table indexPathForCell:cell];
+        [m_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
     }
-    else if (index == 0)
+    else
     {
-        // done
-        [(ReminderViewCell *)cell SwapDone];
-        [cell hideUtilityButtonsAnimated:YES];
-        [(ReminderViewCell *)cell HideRedDot];
+        [self ShowHudWithTitle:LocalizedString(@"DeleteReminderFail") Complete:nil];
     }
     [[ReminderHelper Share] RefreshBadgeNumber];
 }
 
-
-- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+- (void) ReminderViewCellDidTapDone:(ReminderViewCell *)cell
 {
-    return YES;
+    // done
+    [(ReminderViewCell *)cell SwapDone];
+    [(ReminderViewCell *)cell HideRedDot];
+    [[ReminderHelper Share] RefreshBadgeNumber];
 }
+
 
 
 @end

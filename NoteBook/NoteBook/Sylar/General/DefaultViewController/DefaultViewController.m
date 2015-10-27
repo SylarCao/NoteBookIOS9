@@ -36,11 +36,6 @@
     return self;
 }
 
-//- (BOOL) prefersStatusBarHidden
-//{
-//    return YES;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,6 +52,8 @@
 {
     NSString *path = NSHomeDirectory();
     NSLog(@"home = %@", path);
+    
+    NSLog(@"screen = %f, %f", kSCREEN_WIDTH, kSCREEN_HEIGHT);
 }
 
 - (void) SetInitialValued

@@ -13,10 +13,12 @@
 ///////////////////////////////////////////////////////////////
 @interface ReminderViewCell()
 {
-    IBOutlet UIImageView *m_red_dot;
+//    IBOutlet UIImageView *m_red_dot;
     IBOutlet UILabel     *m_title;
     UILocalNotification  *m_local_notification;
 }
+
+@property (nonatomic, weak) IBOutlet UIImageView *redDot;
 @end
 ///////////////////////////////////////////////////////////////
 @implementation ReminderViewCell
@@ -36,14 +38,36 @@
 - (NSArray *) SetRightButtons
 {
     NSMutableArray *rt = [[NSMutableArray alloc] init];
-    [rt sw_addUtilityButtonWithColor:[UIColor darkGrayColor] title:LocalizedString(@"Done")];
-    [rt sw_addUtilityButtonWithColor:[UIColor redColor] title:LocalizedString(@"Delete")];
+//    [rt sw_addUtilityButtonWithColor:[UIColor darkGrayColor] title:LocalizedString(@"Done")];
+//    [rt sw_addUtilityButtonWithColor:[UIColor redColor] title:LocalizedString(@"Delete")];
     return rt;
 }
 
 - (void) SetInitialValue
 {
-    m_red_dot.hidden = YES;
+    _redDot.hidden = YES;
+    
+    // swipe buttons
+    MGSwipeButton *b1 = [MGSwipeButton buttonWithTitle:@"删除" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        if ([_cbDelegate respondsToSelector:@selector(ReminderViewCellDidTapDelete:)])
+        {
+            [_cbDelegate performSelector:@selector(ReminderViewCellDidTapDelete:) withObject:self];
+        }
+        return YES;
+    }];
+    MGSwipeButton *b2 = [MGSwipeButton buttonWithTitle:@"完成" backgroundColor:[UIColor grayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        if (_redDot.isHidden == NO)
+        {
+            [self HideRedDot];
+        }
+        if ([_cbDelegate respondsToSelector:@selector(ReminderViewCellDidTapDone:)])
+        {
+            [_cbDelegate performSelector:@selector(ReminderViewCellDidTapDone:) withObject:self];
+        }
+        return YES;
+    }];
+    
+    self.rightButtons = @[b1, b2];
 }
 
 - (void) SetWithData:(UILocalNotification *)notification
@@ -57,12 +81,12 @@
     BOOL start = [ReminderHelper CheckNotificationBegin:notification];
     BOOL done = [ReminderHelper CheckNotificationDone:notification];
     BOOL hide = (!start) || done;
-    m_red_dot.hidden = hide;
+    _redDot.hidden = hide;
 }
 
 - (void) HideRedDot
 {
-    m_red_dot.hidden = YES;
+    _redDot.hidden = YES;
 }
 
 - (void) SwapDone

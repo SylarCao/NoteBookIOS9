@@ -96,8 +96,8 @@
 - (void) SetCollectionView
 {
     DraggableCollectionViewFlowLayout* layout = [[DraggableCollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(100, 100);
-    layout.minimumInteritemSpacing = 0;
+    layout.itemSize = CGSizeMake(116, 116);
+    layout.minimumInteritemSpacing = 5;
     layout.minimumLineSpacing = 5;
     layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     float navi = [CommonTools GetNaviStatusBarHeight];
@@ -196,7 +196,6 @@
 }
 
 // delegate
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [[DataModel Share] GetItemCount]+1;
