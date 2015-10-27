@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "NoteListViewController.h"
+#import "ReminderHelper.h"
+#import "SettingHelper.h"
 
 @interface AppDelegate ()
+{
+    UINavigationController   *m_navi;
+}
 
 @end
 
@@ -16,7 +22,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    NoteListViewController* dd = [[NoteListViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dd];
+    m_navi = nav;
+    self.window.rootViewController = nav;
+    [_window addSubview:[nav view]];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
