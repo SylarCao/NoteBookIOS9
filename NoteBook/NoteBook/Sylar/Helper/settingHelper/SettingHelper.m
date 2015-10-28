@@ -13,7 +13,7 @@
 # define kSettingKeyFontSize            @"kSettingKeyFontSize"
 # define kSettingKeyPasswordLastTime    @"kSettingKeyPasswordLastTime"
 ///////////////////////////////////////////////////////////////
-const NSInteger c_password_time_delta = 10; // 1 min
+const NSInteger c_password_time_delta = 30; // 0.5 min
 ///////////////////////////////////////////////////////////////
 @interface SettingHelper()
 {

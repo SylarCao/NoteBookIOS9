@@ -37,7 +37,7 @@
         }
         return YES;
     }];
-    
+    [b2 setPadding:30];
     self.rightButtons = @[b2];
 
 }
