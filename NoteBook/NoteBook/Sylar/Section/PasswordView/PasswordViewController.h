@@ -11,4 +11,7 @@
 
 @interface PasswordViewController : DefaultViewController
 
+// check if this view is shown
++ (BOOL) checkAppear;
+
 @end

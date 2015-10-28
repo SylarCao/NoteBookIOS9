@@ -5,17 +5,27 @@
 //  Created by Sylar on 4/1/14.
 //  Copyright (c) 2014 Sylar. All rights reserved.
 //
-
+/////////////////////////////////////////////////////////
 #import <UIKit/UIKit.h>
-#import "SWTableViewCell.h"
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
+@class RevertVersionTableViewCell;
 @class LocalVersionItem;
+/////////////////////////////////////////////////////////
+@protocol RevertVersionTableViewCellDelegate <NSObject>
 
-@interface RevertVersionTableViewCell : SWTableViewCell
+@optional
+- (void) RevertVersionTableViewCellDidTapDelete:(RevertVersionTableViewCell *)cell;
+
+@end
+/////////////////////////////////////////////////////////
+@interface RevertVersionTableViewCell : MGSwipeTableCell
+
+@property (nonatomic, weak) id<RevertVersionTableViewCellDelegate> cbDelegate;
 
 + (NSString *) GetCellId;
-
-- (NSArray *) SetRightButtons;
 
 - (void) SetWithData:(LocalVersionItem *)item;
 
 @end
+/////////////////////////////////////////////////////////

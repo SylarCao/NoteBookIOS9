@@ -64,13 +64,13 @@
     return rt;
 }
 
-- (int) GetItemCount
+- (NSInteger) GetItemCount
 {
-    int rt = [m_current count];
+    NSInteger rt = [m_current count];
     return rt;
 }
 
-- (ItemModel *) GetItemAtIndex:(int)_index
+- (ItemModel *) GetItemAtIndex:(NSInteger)_index
 {
     ItemModel *rt = nil;
     if (_index < [m_current count])
@@ -80,9 +80,9 @@
     return rt;
 }
 
-- (void) MoveItemAtIndex:(int)_fromIndex To:(int)_toIndex
+- (void) MoveItemAtIndex:(NSInteger)_fromIndex To:(NSInteger)_toIndex
 {
-    int count = [m_current count];
+    NSInteger count = [m_current count];
     if (_fromIndex<count && _toIndex<count)
     {
         ItemModel *from = [m_current objectAtIndex:_fromIndex];

@@ -83,7 +83,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *rt = nil;
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     
     if (row == kSettingIndexPassword)
     {
@@ -106,7 +106,7 @@
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0)
 {
     BOOL rt = NO;
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     if (row == kSettingIndexFontSize)
     {
         rt = YES;
@@ -121,7 +121,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     if (row == kSettingIndexFontSize)
     {
         SettingFontSizeViewController *ss = [[SettingFontSizeViewController alloc] initWithNibName:nil bundle:nil];

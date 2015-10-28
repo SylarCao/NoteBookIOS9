@@ -16,7 +16,6 @@
 #import "DataModel.h"
 #import "NoteListDetailedViewController.h"
 #import "ItemModel.h"
-#import "CommonActionSheet.h"
 #import "MenuViewController.h"
 /////////////////////////////////////////////////////////////////////
 @interface NoteListViewController ()
@@ -177,22 +176,20 @@
 
 - (void) cbFromCellRemoveCell:(NoteListViewCell *)_cell
 {
-    CommonActionSheet* action = [CommonActionSheet Create];
-    action.title = LocalizedString(@"SureDelete");
-    action.cancelButtonTitle = LocalizedString(@"Cancel");
-    action.destructiveButtonTitle = LocalizedString(@"Delete");
-    action.showInView = self.view;
-    
-    [action ShowWithSelectedIndex:^(int index) {
-        if (index == 0)
-        {
-            // delete
-            [[DataModel Share] RemoveItem:_cell.data];
-            NSIndexPath *path = [m_collection_view indexPathForCell:_cell];
-            [m_collection_view deleteItemsAtIndexPaths:[NSArray arrayWithObject:path]];
-            [self CellBeginEditing];
-        }
+    UIAlertController *alert_vctl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action_revert = [UIAlertAction actionWithTitle:@"还原" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        // delete
+        [[DataModel Share] RemoveItem:_cell.data];
+        NSIndexPath *path = [m_collection_view indexPathForCell:_cell];
+        [m_collection_view deleteItemsAtIndexPaths:[NSArray arrayWithObject:path]];
+        [self CellBeginEditing];
     }];
+    [alert_vctl addAction:action_revert];
+    UIAlertAction *action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert_vctl addAction:action_cancel];
+    [self presentViewController:alert_vctl animated:YES completion:nil];
+    
+    
 }
 
 // delegate
@@ -252,7 +249,7 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    int cell_number = [[DataModel Share] GetItemCount];
+    NSInteger cell_number = [[DataModel Share] GetItemCount];
     if (indexPath.row == cell_number)
         return NO;
     if (toIndexPath.row == cell_number)

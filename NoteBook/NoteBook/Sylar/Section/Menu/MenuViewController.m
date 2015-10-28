@@ -105,7 +105,7 @@
 - (NSString *) GetTitleForIndexPath:(NSIndexPath *)indexPath
 {
     NSString *rt = @"";
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     if (row == kMenuIndexPassword)
     {
         rt = LocalizedString(@"ChangePassword");
@@ -136,7 +136,7 @@
 
 - (void) SelectIndexPath:(NSIndexPath *)indexPath
 {
-    int row = indexPath.row;
+    NSInteger row = indexPath.row;
     if (row == kMenuIndexPassword)
     {
         ChangPasswordViewController *cc = [[ChangPasswordViewController alloc] initWithNibName:nil bundle:nil];

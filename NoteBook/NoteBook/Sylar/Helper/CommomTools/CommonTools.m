@@ -33,7 +33,7 @@
 
 + (void) AutoLayoutVerticleView:(UIView*)_parentView WithSubviews:(NSArray*)_subViews TopEdge:(float)_topEdge BottomEdge:(float)_bottomEdge NeedCenter:(BOOL)_center
 {
-    int subview_count = [_subViews count];
+    NSInteger subview_count = [_subViews count];
     if (subview_count > 0)
     {
         float total_subview_height = _topEdge+_bottomEdge;

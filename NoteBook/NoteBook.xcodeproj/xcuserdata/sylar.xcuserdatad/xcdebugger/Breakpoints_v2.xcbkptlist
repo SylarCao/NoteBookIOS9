@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/Sylar/Section/Menu/Reminder/ReminderViewCell.m"
-            timestampString = "467638085.544322"
+            timestampString = "467707830.324812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-SetInitialValue"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/Sylar/Section/Menu/Reminder/ReminderViewCell.m"
-            timestampString = "467638085.544322"
+            timestampString = "467707830.324812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-SetWithData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/Sylar/Section/Menu/Reminder/ReminderViewCell.m"
-            timestampString = "467638085.544322"
+            timestampString = "467707830.324812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-HideRedDot"
             landmarkType = "5">
          </BreakpointContent>
@@ -96,6 +96,22 @@
             startingLineNumber = "52"
             endingLineNumber = "52"
             landmarkName = "-SaveData:WithTitle:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/AppDelegate.m"
+            timestampString = "467707830.324812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-applicationWillResignActive:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

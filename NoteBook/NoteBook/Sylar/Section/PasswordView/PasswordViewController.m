@@ -14,11 +14,13 @@
 ////////////////////////////////////////////////////////////////////////////////////
 const float c_securyView_title_height = 50;
 const float c_securyView_title_font_size = 25;
+static BOOL m_appear = NO;
 ////////////////////////////////////////////////////////////////////////////////////
 @interface PasswordViewController ()
 <MJPasswordDelegate>
 {
     UILabel*   m_label_title;
+    
 }
 @end
 ////////////////////////////////////////////////////////////////////////////////////
@@ -34,16 +36,22 @@ const float c_securyView_title_font_size = 25;
     return self;
 }
 
-- (void)viewDidLoad
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [super viewWillAppear:animated];
+    m_appear = YES;
 }
 
-- (void)didReceiveMemoryWarning
+- (void) viewDidDisappear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidDisappear:animated];
+    m_appear = NO;
+}
+
++ (BOOL) checkAppear
+{
+    BOOL rt = m_appear;
+    return rt;
 }
 
 - (void) SetInitialValue

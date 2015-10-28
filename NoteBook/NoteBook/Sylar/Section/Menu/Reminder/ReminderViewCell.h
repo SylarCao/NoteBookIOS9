@@ -31,8 +31,6 @@
 
 - (void) SetWithData:(UILocalNotification *)notification;
 
-- (NSArray *) SetRightButtons;
-
 - (void) SwapDone;
 
 - (UILocalNotification *) SwapDelete;

@@ -28,15 +28,18 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
     [super awakeFromNib];
-}
+    
+    MGSwipeButton *b2 = [MGSwipeButton buttonWithTitle:@"删除" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        if ([_cbDelegate respondsToSelector:@selector(RevertVersionTableViewCellDidTapDelete:)])
+        {
+            [_cbDelegate performSelector:@selector(RevertVersionTableViewCellDidTapDelete:) withObject:self];
+        }
+        return YES;
+    }];
+    
+    self.rightButtons = @[b2];
 
-- (NSArray *) SetRightButtons
-{
-    NSMutableArray *rt = [[NSMutableArray alloc] init];
-    [rt sw_addUtilityButtonWithColor:[UIColor redColor] title:LocalizedString(@"Delete")];
-    return rt;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

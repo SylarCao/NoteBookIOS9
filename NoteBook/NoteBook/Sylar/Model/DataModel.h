@@ -16,11 +16,11 @@
 // revert version
 - (BOOL) RevertVersion:(NSMutableArray *)data PlistData:(NSMutableArray *)plistData;
 
-- (int) GetItemCount;
+- (NSInteger) GetItemCount;
 
-- (ItemModel *) GetItemAtIndex:(int)_index;
+- (ItemModel *) GetItemAtIndex:(NSInteger)_index;
 
-- (void) MoveItemAtIndex:(int)_fromIndex To:(int)_toIndex;
+- (void) MoveItemAtIndex:(NSInteger)_fromIndex To:(NSInteger)_toIndex;
 
 - (void) AddItem:(ItemModel *)_item;
 

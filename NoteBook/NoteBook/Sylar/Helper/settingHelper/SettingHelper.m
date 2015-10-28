@@ -13,7 +13,7 @@
 # define kSettingKeyFontSize            @"kSettingKeyFontSize"
 # define kSettingKeyPasswordLastTime    @"kSettingKeyPasswordLastTime"
 ///////////////////////////////////////////////////////////////
-const NSInteger c_password_time_delta = 60; // 1 min
+const NSInteger c_password_time_delta = 10; // 1 min
 ///////////////////////////////////////////////////////////////
 @interface SettingHelper()
 {
@@ -41,7 +41,7 @@ const NSInteger c_password_time_delta = 60; // 1 min
         m_setting = [[[NSUserDefaults standardUserDefaults] objectForKey:kSettingKeyAll] mutableCopy];
         if (m_setting == nil)
         {
-            NSString *font_size = [NSString stringWithFormat:@"%d", en_setting_font_size_middle];
+            NSString *font_size = [NSString stringWithFormat:@"%ld", en_setting_font_size_middle];
             m_setting = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                          @"0",      kSettingKeyPassword,
                          font_size, kSettingKeyFontSize,
@@ -89,7 +89,7 @@ const NSInteger c_password_time_delta = 60; // 1 min
 
 - (void) SetFontSize:(enSettingFontSize)fontSize
 {
-    NSString *font_size = [NSString stringWithFormat:@"%d", fontSize];
+    NSString *font_size = [NSString stringWithFormat:@"%ld", fontSize];
     [m_setting setObject:font_size forKey:kSettingKeyFontSize];
     [self Synchronize];
 }
@@ -110,7 +110,7 @@ const NSInteger c_password_time_delta = 60; // 1 min
     if ([self CheckPasswordOn])
     {
         NSInteger time0 = [[NSDate date] timeIntervalSince1970];
-        NSString *str_time0 = [NSString stringWithFormat:@"%d", time0];
+        NSString *str_time0 = [NSString stringWithFormat:@"%ld", time0];
         [m_setting setObject:str_time0 forKey:kSettingKeyPasswordLastTime];
         [self Synchronize];
     }

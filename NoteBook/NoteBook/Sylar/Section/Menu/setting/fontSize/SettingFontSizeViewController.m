@@ -97,7 +97,7 @@
 - (enSettingFontSize) GetFontSizeAtIndexPath:(NSIndexPath *)indexPath
 {
     enSettingFontSize rt = en_setting_font_size_middle;
-    int index = indexPath.row;
+    NSInteger index = indexPath.row;
     if (index == 0)
     {
         rt = en_setting_font_size_small;
@@ -113,7 +113,7 @@
     return rt;
 }
 
-- (NSString *) GetTitleWithIndex:(int)index
+- (NSString *) GetTitleWithIndex:(NSInteger)index
 {
     NSString *rt = @"";
     if (index == 0)

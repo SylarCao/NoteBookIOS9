@@ -9,7 +9,6 @@
 #import "ReminderViewCell.h"
 #import "ReminderHelper.h"
 #import "CommonTools.h"
-#import "CommonActionSheet.h"
 ///////////////////////////////////////////////////////////////
 @interface ReminderViewCell()
 {
@@ -33,14 +32,6 @@
 {
     [super awakeFromNib];
     [self SetInitialValue];
-}
-
-- (NSArray *) SetRightButtons
-{
-    NSMutableArray *rt = [[NSMutableArray alloc] init];
-//    [rt sw_addUtilityButtonWithColor:[UIColor darkGrayColor] title:LocalizedString(@"Done")];
-//    [rt sw_addUtilityButtonWithColor:[UIColor redColor] title:LocalizedString(@"Delete")];
-    return rt;
 }
 
 - (void) SetInitialValue
