@@ -54,30 +54,24 @@
 
 - (void) BtnRevert
 {
-    CommonActionSheet* action = [CommonActionSheet Create];
-    action.title = LocalizedString(@"SureRevert");
-    action.cancelButtonTitle = LocalizedString(@"Cancel");
-    action.destructiveButtonTitle = LocalizedString(@"NaviRevert");
-    action.showInView = self.view;
-    
-    [action ShowWithSelectedIndex:^(int index) {
-        if (index == 0)
+    UIAlertController *alert_vctl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action_revert = [UIAlertAction actionWithTitle:@"还原" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        BOOL success = [[DataModel Share] RevertVersion:[m_local_version_item.items mutableCopy] PlistData:m_local_version_item.data];
+        NSString *pop_title = nil;
+        if (success)
         {
-            // revert
-            BOOL success = [[DataModel Share] RevertVersion:[m_local_version_item.items mutableCopy] PlistData:m_local_version_item.data];
-            NSString *pop_title = nil;
-            if (success)
-            {
-                pop_title = LocalizedString(@"RevertSuccess");
-            }
-            else
-            {
-                pop_title = LocalizedString(@"RevertFail");
-            }
-            [self ShowHudWithTitle:pop_title Complete:nil];
-            
+            pop_title = LocalizedString(@"RevertSuccess");
         }
+        else
+        {
+            pop_title = LocalizedString(@"RevertFail");
+        }
+        [self ShowHudWithTitle:pop_title Complete:nil];
     }];
+    [alert_vctl addAction:action_revert];
+    UIAlertAction *action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert_vctl addAction:action_cancel];
+    [self presentViewController:alert_vctl animated:YES completion:nil];
 }
 
 // delegate
