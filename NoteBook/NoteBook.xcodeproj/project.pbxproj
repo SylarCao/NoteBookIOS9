@@ -95,7 +95,7 @@
 		2CBDD1201BDF650600FB7519 /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD08E1BDF650600FB7519 /* NoteListViewController.m */; };
 		2CBDD1211BDF650600FB7519 /* PasswordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0911BDF650600FB7519 /* PasswordHelper.m */; };
 		2CBDD1221BDF650600FB7519 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0931BDF650600FB7519 /* PasswordViewController.m */; };
-		2CBDD1231BDF650600FB7519 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0971BDF650600FB7519 /* AESCrypt.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2CBDD1231BDF650600FB7519 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0971BDF650600FB7519 /* AESCrypt.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w"; }; };
 		2CBDD1241BDF650600FB7519 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD0991BDF650600FB7519 /* NSData+Base64.m */; };
 		2CBDD1251BDF650600FB7519 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD09B1BDF650600FB7519 /* NSData+CommonCrypto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2CBDD1261BDF650600FB7519 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBDD09D1BDF650600FB7519 /* NSString+Base64.m */; };
@@ -251,7 +251,6 @@
 		2CBDD09B1BDF650600FB7519 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		2CBDD09C1BDF650600FB7519 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		2CBDD09D1BDF650600FB7519 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
-		2CBDD09F1BDF650600FB7519 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		2CBDD0A21BDF650600FB7519 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
 		2CBDD0A31BDF650600FB7519 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
 		2CBDD0A41BDF650600FB7519 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
@@ -715,7 +714,6 @@
 			children = (
 				2CBDD14E1BDF6B7F00FB7519 /* MGSwipeTableCell */,
 				2CBDD0951BDF650600FB7519 /* AES */,
-				2CBDD09E1BDF650600FB7519 /* AVO */,
 				2CBDD0A01BDF650600FB7519 /* DraggableCollectionView */,
 				2CBDD0AD1BDF650600FB7519 /* JsonKit */,
 				2CBDD0B51BDF650600FB7519 /* MBProgressHUD */,
@@ -737,14 +735,6 @@
 				2CBDD09D1BDF650600FB7519 /* NSString+Base64.m */,
 			);
 			path = AES;
-			sourceTree = "<group>";
-		};
-		2CBDD09E1BDF650600FB7519 /* AVO */ = {
-			isa = PBXGroup;
-			children = (
-				2CBDD09F1BDF650600FB7519 /* AVOSCloud.framework */,
-			);
-			path = AVO;
 			sourceTree = "<group>";
 		};
 		2CBDD0A01BDF650600FB7519 /* DraggableCollectionView */ = {
