@@ -15,3 +15,12 @@
 + (BOOL) checkAppear;
 
 @end
+
+
+/*
+ warning : 
+ 
+ CGContextSetStrokeColorWithColor: invalid context 0x0. If you want to see the backtrace, please set CG_CONTEXT_SHOW_BACKTRACE environmental variable.
+ 
+ */
+
