@@ -41,7 +41,6 @@
 - (void) SetNaviBar
 {
     [self SetNaviTitle: m_local_version_item.title];
-    
     [self SetNaviBackItem];
     
     // right navi button
