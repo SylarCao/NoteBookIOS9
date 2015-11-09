@@ -177,7 +177,7 @@
 - (void) cbFromCellRemoveCell:(NoteListViewCell *)_cell
 {
     UIAlertController *alert_vctl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *action_revert = [UIAlertAction actionWithTitle:@"还原" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *action_revert = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         // delete
         [[DataModel Share] RemoveItem:_cell.data];
         NSIndexPath *path = [m_collection_view indexPathForCell:_cell];
