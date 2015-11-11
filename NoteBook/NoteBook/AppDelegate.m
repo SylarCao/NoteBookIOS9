@@ -30,7 +30,7 @@
     self.window.rootViewController = nav;
     [_window addSubview:[nav view]];
     [self.window makeKeyAndVisible];
-    
+    [[SettingHelper Share] SynchronizePasswordTime:0];
     // notification
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
                                             | UIUserNotificationTypeBadge
@@ -79,7 +79,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
-    [[SettingHelper Share] SynchronizePasswordTime:0];
+    
 }
 
 @end

@@ -34,9 +34,7 @@ static BOOL m_appear = NO;
         // Custom initialization
         [self SetInitialValue];
         
-        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setWithTouchID)];
-        [self.view addGestureRecognizer:tap1];
-    }
+            }
     return self;
 }
 
@@ -65,6 +63,10 @@ static BOOL m_appear = NO;
 
 - (void) SetInitialValue
 {
+    // add tap touchID gesture
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
+    [self.view addGestureRecognizer:tap1];
+
     // title label
     m_label_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, c_securyView_title_height)];
     [m_label_title setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
@@ -85,16 +87,26 @@ static BOOL m_appear = NO;
     [CommonTools AutoLayoutVerticleView:self.view WithSubviews:[NSArray arrayWithObjects:m_label_title, password_view, nil] TopEdge:0 BottomEdge:20 NeedCenter:YES];
     
     // add gesture
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap10)];
-    tap.numberOfTapsRequired = 20;
+    UITapGestureRecognizer *long_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap10)];
+    long_tap.numberOfTapsRequired = 10;
     m_label_title.userInteractionEnabled = YES;
-    [m_label_title addGestureRecognizer:tap];
+    [m_label_title addGestureRecognizer:long_tap];
 }
 
 - (void) gestureTap10
 {
     [[SettingHelper Share] SetPasswordOnOff:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) tapView:(UITapGestureRecognizer *)aTap
+{
+    CGPoint tap_location = [aTap locationInView:m_label_title];
+    BOOL in_label = CGRectContainsPoint(m_label_title.bounds, tap_location);
+    if (in_label == NO)
+    {
+        [self setWithTouchID];
+    }
 }
 
 - (void) setWithTouchID
