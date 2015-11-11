@@ -120,7 +120,7 @@
 - (void) ShowPasswordView
 {
     PasswordViewController* pp = [[PasswordViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:pp animated:YES completion:nil];
+    [self presentViewController:pp animated:NO completion:nil];
 }
 
 - (UIButton*) GetButtonWithTitle:(NSString*)_pTitle
