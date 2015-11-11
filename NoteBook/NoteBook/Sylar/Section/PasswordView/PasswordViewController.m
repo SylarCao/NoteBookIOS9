@@ -33,6 +33,9 @@ static BOOL m_appear = NO;
     if (self) {
         // Custom initialization
         [self SetInitialValue];
+        
+        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setWithTouchID)];
+        [self.view addGestureRecognizer:tap1];
     }
     return self;
 }
@@ -108,27 +111,8 @@ static BOOL m_appear = NO;
                                         [[SettingHelper Share] SynchronizePasswordTime];
                                         [self dismissViewControllerAnimated:YES completion:nil];
                                     });
-                                } else {
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                            message:error.description
-                                                                                           delegate:self
-                                                                                  cancelButtonTitle:@"OK"
-                                                                                  otherButtonTitles:nil, nil];
-                                        [alertView show];
-                                        NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
-                                    });
                                 }
                             }];
-    } else {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:authError.description
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil, nil];
-            [alertView show];
-        });
     }
 }
 
