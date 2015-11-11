@@ -17,6 +17,7 @@
 # define kSettingIndexFontSize       2
 # define kSettingIndexPassword       0
 # define kSettingIndexPasswordChange 1
+# define kSettingIndexTouchID        3
 ////////////////////////////////////////////////////////////////////////
 @interface SettingViewController ()
 <UITableViewDataSource, UITableViewDelegate>
@@ -87,8 +88,9 @@
     
     if (row == kSettingIndexPassword)
     {
-        rt = [tableView dequeueReusableCellWithIdentifier:[SettingPasswordCell GetCellId] forIndexPath:indexPath];
-        ((SettingPasswordCell*)rt).parentViewcontroller = self;
+        SettingPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:[SettingPasswordCell GetCellId] forIndexPath:indexPath];
+        cell.parentViewcontroller = self;
+        rt = cell;
     }
     else if (row == kSettingIndexFontSize)
     {
@@ -99,6 +101,11 @@
     {
         rt = [tableView dequeueReusableCellWithIdentifier:[MenuTableViewCell GetCellId] forIndexPath:indexPath];
         [(MenuTableViewCell *)rt SetWithTitle:LocalizedString(@"ChangePassword")];
+    }
+    else if (row == kSettingIndexTouchID)
+    {
+        rt = [tableView dequeueReusableCellWithIdentifier:[SettingPasswordCell GetCellId] forIndexPath:indexPath];
+        
     }
     return rt;
 }

@@ -105,15 +105,20 @@ const NSInteger c_password_time_delta = 30; // 0.5 min
     return rt;
 }
 
-- (void) SynchronizePasswordTime
+- (void) SynchronizePasswordTime:(NSTimeInterval)time
 {
     if ([self CheckPasswordOn])
     {
-        NSInteger time0 = [[NSDate date] timeIntervalSince1970];
-        NSString *str_time0 = [NSString stringWithFormat:@"%ld", time0];
+        NSString *str_time0 = [NSString stringWithFormat:@"%ld", (long)time];
         [m_setting setObject:str_time0 forKey:kSettingKeyPasswordLastTime];
         [self Synchronize];
     }
+}
+
+- (void) SynchronizePasswordTime
+{
+    NSInteger time0 = [[NSDate date] timeIntervalSince1970];
+    [self SynchronizePasswordTime:time0];
 }
 
 - (void) Synchronize

@@ -16,6 +16,9 @@
     IBOutlet UILabel   *m_label;
     IBOutlet UISwitch  *m_switch;
 }
+
+@property (nonatomic, assign) enPasswordType passwordType;
+
 @end
 ////////////////////////////////////////////////////////////
 @implementation SettingPasswordCell
@@ -32,13 +35,6 @@
     [self SetInitialValue];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void) SetInitialValue
 {
     // label
@@ -47,6 +43,11 @@
     // switch
     m_switch.on = [[SettingHelper Share] CheckPasswordOn];
     [m_switch addTarget:self action:@selector(PasswordChange:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) setWithPassowrdType:(enPasswordType)type
+{
+    _passwordType = type;
 }
 
 - (void) PasswordChange:(UISwitch *)switcher

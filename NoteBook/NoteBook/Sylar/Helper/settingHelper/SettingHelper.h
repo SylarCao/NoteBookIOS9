@@ -29,6 +29,13 @@ typedef NS_ENUM(NSInteger, enSettingFontSize)
 
 - (enSettingFontSize) GetFontSize;
 
+/**
+ *  <#Description#>
+ *
+ *  @param time <#time description#>
+ */
+- (void) SynchronizePasswordTime:(NSTimeInterval)time;
 - (void) SynchronizePasswordTime;
+
 
 @end

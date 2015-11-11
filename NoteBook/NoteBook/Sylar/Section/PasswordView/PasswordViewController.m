@@ -11,6 +11,7 @@
 #import "PasswordHelper.h"
 #import "CommonTools.h"
 #import "SettingHelper.h"
+#import <LocalAuthentication/LocalAuthentication.h>
 ////////////////////////////////////////////////////////////////////////////////////
 const float c_securyView_title_height = 50;
 const float c_securyView_title_font_size = 25;
@@ -40,6 +41,11 @@ static BOOL m_appear = NO;
 {
     [super viewWillAppear:animated];
     m_appear = YES;
+    
+    if (TARGET_IPHONE_SIMULATOR == NO)
+    {
+        [self setWithTouchID];
+    }
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -88,6 +94,43 @@ static BOOL m_appear = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void) setWithTouchID
+{
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    NSString *myLocalizedReasonString = @"指纹解锁";
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                  localizedReason:myLocalizedReasonString
+                            reply:^(BOOL success, NSError *error) {
+                                if (success) {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [[SettingHelper Share] SynchronizePasswordTime];
+                                        [self dismissViewControllerAnimated:YES completion:nil];
+                                    });
+                                } else {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                            message:error.description
+                                                                                           delegate:self
+                                                                                  cancelButtonTitle:@"OK"
+                                                                                  otherButtonTitles:nil, nil];
+                                        [alertView show];
+                                        NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
+                                    });
+                                }
+                            }];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:authError.description
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+            [alertView show];
+        });
+    }
+}
 
 // delegate
 - (void)passwordView:(MJPasswordView*)passwordView withPassword:(NSString*)password
