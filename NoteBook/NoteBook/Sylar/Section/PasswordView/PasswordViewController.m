@@ -68,23 +68,25 @@ static BOOL m_appear = NO;
     [self.view addGestureRecognizer:tap1];
 
     // title label
-    m_label_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, c_securyView_title_height)];
+    m_label_title = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, kSCREEN_WIDTH, c_securyView_title_height)];
     [m_label_title setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
-    [m_label_title setText:LocalizedString(@"InputPassword")];
+    [m_label_title setText:@"指纹解锁"];
     [m_label_title setFont:[UIFont systemFontOfSize:c_securyView_title_font_size]];
     [m_label_title setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:m_label_title];
     
-    // password view
-    CGRect frame = CGRectMake((kSCREEN_WIDTH - kPasswordViewSideLength)/2, 0, kPasswordViewSideLength, kPasswordViewSideLength);
-    MJPasswordView* password_view = [[MJPasswordView alloc] initWithFrame:frame];
-    [password_view setDelegate:self];
-    [password_view setP_image:[UIImage imageNamed:@"password"]];
-    [password_view setP_image_highlighted:[UIImage imageNamed:@"password_highlighted"]];
-    [self.view addSubview:password_view];
+//    // password view
+//    CGRect frame = CGRectMake((kSCREEN_WIDTH - kPasswordViewSideLength)/2, 0, kPasswordViewSideLength, kPasswordViewSideLength);
+//    MJPasswordView* password_view = [[MJPasswordView alloc] initWithFrame:frame];
+//    [password_view setDelegate:self];
+//    [password_view setP_image:[UIImage imageNamed:@"password"]];
+//    [password_view setP_image_highlighted:[UIImage imageNamed:@"password_highlighted"]];
+//    [self.view addSubview:password_view];
+//    
+//    // auto layout
+//    [CommonTools AutoLayoutVerticleView:self.view WithSubviews:[NSArray arrayWithObjects:m_label_title, password_view, nil] TopEdge:0 BottomEdge:20 NeedCenter:YES];
     
-    // auto layout
-    [CommonTools AutoLayoutVerticleView:self.view WithSubviews:[NSArray arrayWithObjects:m_label_title, password_view, nil] TopEdge:0 BottomEdge:20 NeedCenter:YES];
+    
     
     // add gesture
     UITapGestureRecognizer *long_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap10)];
