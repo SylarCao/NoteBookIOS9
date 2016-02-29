@@ -158,7 +158,16 @@
     {
         [[UIApplication sharedApplication] cancelLocalNotification:delete_notification];
         NSIndexPath *indexPath = [m_table indexPathForCell:cell];
-        [m_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        if (indexPath)
+        {
+            [m_table deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        else
+        {
+            // 不知道 为什么indexPath=nil 但是也会删掉
+            NSLog(@"delete fail");
+        }
+        
     }
     else
     {
