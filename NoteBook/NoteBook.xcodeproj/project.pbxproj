@@ -853,6 +853,7 @@
 				TargetAttributes = {
 					2C2B4F851BBB73F20068C1D5 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = KDQ72H3LGF;
 					};
 				};
 			};
@@ -1140,11 +1141,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KDQ72H3LGF;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
 				INFOPLIST_FILE = NoteBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sylar.NoteBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sylar.NoteBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1153,11 +1155,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KDQ72H3LGF;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
 				INFOPLIST_FILE = NoteBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sylar.NoteBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sylar.NoteBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

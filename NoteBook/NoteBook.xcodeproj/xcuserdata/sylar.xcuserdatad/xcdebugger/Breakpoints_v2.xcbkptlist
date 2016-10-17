@@ -112,7 +112,7 @@
             startingLineNumber = "53"
             endingLineNumber = "53"
             landmarkName = "-applicationWillResignActive:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,7 +176,7 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "-applicationDidBecomeActive:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
