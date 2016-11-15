@@ -853,7 +853,7 @@
 				TargetAttributes = {
 					2C2B4F851BBB73F20068C1D5 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = KDQ72H3LGF;
+						DevelopmentTeam = 925M29NF35;
 					};
 				};
 			};
@@ -1141,7 +1141,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KDQ72H3LGF;
+				DEVELOPMENT_TEAM = 925M29NF35;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
 				INFOPLIST_FILE = NoteBook/Info.plist;
@@ -1155,7 +1155,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KDQ72H3LGF;
+				DEVELOPMENT_TEAM = 925M29NF35;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
 				INFOPLIST_FILE = NoteBook/Info.plist;
