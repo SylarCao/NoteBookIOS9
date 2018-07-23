@@ -22,19 +22,10 @@
 ////////////////////////////////////////////////////////////////////////////
 @implementation ReminderViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        [self SetInitialValue];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self SetInitialValue];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -93,6 +84,10 @@
     m_reminders = [[NSMutableArray alloc] initWithArray:sort_arr];
     NSInteger rt = [m_reminders count];
     return rt;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -180,8 +175,11 @@
 {
     // done
     [(ReminderViewCell *)cell SwapDone];
-    [(ReminderViewCell *)cell HideRedDot];
+    
     [[ReminderHelper Share] RefreshBadgeNumber];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [(ReminderViewCell *)cell HideRedDot];
+    });
 }
 
 
