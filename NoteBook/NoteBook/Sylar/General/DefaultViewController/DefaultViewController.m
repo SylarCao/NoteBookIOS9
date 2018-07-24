@@ -84,19 +84,29 @@
 
 - (void) SetNaviBackItem
 {
-    UIImage* back_normal = [UIImage imageNamed:@"navi_back"];
-    UIImage* back_HL = [UIImage imageNamed:@"navi_back_highlighted"];
-    UIEdgeInsets inset = UIEdgeInsetsMake(0, back_normal.size.width/2, 0, back_normal.size.width/2-2);
-    UIImage *back_normal_resize = [back_normal resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
-    UIImage *back_HL_resize = [back_HL resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:NULL];
-    [back setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor darkGrayColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
-    [back setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor clearColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateHighlighted];
-    [back setBackButtonBackgroundImage:back_normal_resize forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [back setBackButtonBackgroundImage:back_HL_resize forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-    [self.navigationItem setBackBarButtonItem:back];
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     
+    if (@available(iOS 11.0, *)) {
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            UIImage *backButtonImage = [[UIImage imageNamed:@"img_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            self.navigationController.navigationBar.backIndicatorImage = backButtonImage;
+            self.navigationController.navigationBar.backIndicatorTransitionMaskImage = backButtonImage;
+        });
+    } else {
+        UIImage* back_normal = [UIImage imageNamed:@"navi_back"];
+        UIImage* back_HL = [UIImage imageNamed:@"navi_back_highlighted"];
+        UIEdgeInsets inset = UIEdgeInsetsMake(0, back_normal.size.width/2, 0, back_normal.size.width/2-2);
+        UIImage *back_normal_resize = [back_normal resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+        UIImage *back_HL_resize = [back_HL resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+        UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:NULL];
+        [back setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor darkGrayColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateNormal];
+        [back setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor clearColor] forKey:NSForegroundColorAttributeName] forState:UIControlStateHighlighted];
+        [back setBackButtonBackgroundImage:back_normal_resize forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [back setBackButtonBackgroundImage:back_HL_resize forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+        [self.navigationItem setBackBarButtonItem:back];
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void) SetNaviBackItemWithTitle:(NSString *)_backTitle  // deprecate
